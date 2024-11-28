@@ -1,0 +1,201 @@
+form {
+    margin-top: 60px;
+}
+
+h2 {
+    text-align: center;
+    color: #fff;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 1.5em;
+}
+
+.input-group {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.input-group-item {
+    flex: 1;
+}
+
+.input-long {
+    width: 100%;
+    max-width: 300px;
+}
+
+.input-container {
+    margin-bottom: 40px;
+}
+
+.input-container label {
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.input-container label {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff; 
+    transform: translateY(-50%);
+}
+
+.input-container input,
+.input-container textarea,
+.input-container select {
+    padding: 15px 50px;
+    margin-top: 5px;
+    width: -webkit-fill-available;
+    font-size: 18px;
+    border: 3px solid #000000;
+    border-radius: 4px;
+    outline: none;
+    color: #000;
+    background: #ffffff94;
+}
+
+.input-container input:focus,
+.input-container textarea:focus,
+.input-container select:focus {
+    border-color: #007bff;
+}
+
+/* Create task button */
+.button-create {
+    position: relative;
+    padding: 15px 50px;
+    border-radius: 6px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    background-color: #5dffe18f;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    font-size:18px;
+}
+
+.button-create:active {
+    transform: scale(0.96);
+}
+
+.button-create:before,
+.button-create:after {
+    position: absolute;
+    content: "";
+    width: 150%;
+    left: 50%;
+    height: 100%;
+    transform: translateX(-50%);
+    z-index: -1000;
+    background-repeat: no-repeat;
+}
+
+.button-create:hover:before {
+    top: -70%;
+    background-image: radial-gradient(circle, #00798fbe 20%, transparent 20%),
+        radial-gradient(circle, transparent 20%, #00798fbe 20%, transparent 30%),
+        radial-gradient(circle, #00798fbe 20%, transparent 20%),
+        radial-gradient(circle, #00798fbe 20%, transparent 20%),
+        radial-gradient(circle, transparent 10%, #00798fbe 15%, transparent 20%),
+        radial-gradient(circle, #00798fbe 20%, transparent 20%),
+        radial-gradient(circle, #00798fbe 20%, transparent 20%),
+        radial-gradient(circle, #00798fbe 20%, transparent 20%),
+        radial-gradient(circle, #00798fbe 20%, transparent 20%);
+    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+    background-position: 50% 120%;
+    animation: greentopBubbles 0.6s ease;
+}
+
+@keyframes greentopBubbles {
+    0% {
+        background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+        40% 90%, 55% 90%, 70% 90%;
+    }
+
+    50% {
+        background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
+    }
+
+    100% {
+        background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+}
+
+.button-create:hover::after {
+    bottom: -70%;
+    background-image: radial-gradient(circle, #00798fbe 20%, transparent 20%),
+        radial-gradient(circle, #00798fbe 20%, transparent 20%),
+        radial-gradient(circle, transparent 10%, #00798fbe 15%, transparent 20%),
+        radial-gradient(circle, #00798fbe 20%, transparent 20%),
+        radial-gradient(circle, #00798fbe 20%, transparent 20%),
+        radial-gradient(circle, #00798fbe 20%, transparent 20%);
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+    background-position: 50% 0%;
+    animation: greenbottomBubbles 0.6s ease;
+}
+
+@keyframes greenbottomBubbles {
+    0% {
+        background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+    }
+
+    50% {
+        background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
+    }
+
+    100% {
+        background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+}
+
+/* Back button */
+.button {
+    position: fixed; 
+    top: 20px; 
+    left: 20px; 
+    font-size: 18px; 
+    z-index: 1000; 
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+    background-color: #cececec9;
+    color: #000000;
+    width: 8.5em;
+    height: 2.9em;
+    border: #000000 0.2em solid;
+    border-radius: 11px;
+    text-align: right;
+    text-decoration: none; 
+    transition: all 0.6s ease;
+}
+
+.button svg {
+    width: 2em;
+    display: flex;
+    transition: all 0.8s ease;
+    animation: periodic-move 2s ease-in-out infinite; 
+}
+
+.text {
+    margin: 0 1em;
+}
+
+@keyframes periodic-move {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-3px);
+    }
+}
+

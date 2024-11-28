@@ -1,0 +1,50 @@
+<div>
+    <%= link_to to_do_lists_path, class: "button back-button" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12H4.5m0 0l6.75 6.75M4.5 12l6.75-6.75"></path>
+        </svg>
+        <div class="text">Back</div>
+    <% end %>
+</div>
+
+
+<%= form_with model: @task do |t| %>
+    <div class="input-container">
+        <%= t.text_field :title, id: :task_title, placeholder: " " %>
+        <%= t.label :title, "Title" %>
+    </div>
+
+    <div class="input-container">
+        <%= t.text_area :description, id: :task_description, placeholder: " " %>
+        <%= t.label :description, "Description" %>
+    </div>
+
+    <div class="input-container">
+        <div class="input-group">
+            <div class="input-group-item">
+            <%= t.date_field :due_date, id: :task_due_date, class: "form-control input-long" %>
+            <%= t.label :due_date, "Due Date and expiration time" %>
+            </div>
+            <div class="input-group-item">
+            <%= t.time_field :due_time, id: :task_due_time, class: "form-control input-long" %>
+            </div>
+        </div>
+    </div>
+
+    <div class="input-container">
+        <%= t.select :priority, ToDoList.priorities.keys.map { |k| [k.humanize, k] }, id: :task_priority %>
+        <%= t.label :priority, "Priority" %>
+    </div>
+
+    <div class="input-container">
+        <%= t.select :statuses, ToDoList.statuses.keys.map { |k| [k.humanize, k] }, id: :task_statuses %>
+        <%= t.label :statuses, "Status" %>
+    </div>
+
+    <div class="input-container">
+        <%= t.select :category, ToDoList.categories.keys.map { |k| [k.humanize, k] }, id: :task_category %>
+        <%= t.label :category, "Category" %>
+    </div>
+
+    <button type="submit" class="button-create">Create task</button>
+<% end %>

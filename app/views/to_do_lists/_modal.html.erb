@@ -1,0 +1,27 @@
+<h2 class="modal-title"><%= task.title %></h2>
+<p><strong>Description:</strong> <%= task.description %></p>
+<p><strong>Due date:</strong><%= task.due_date.present? ? task.due_date.strftime("%A, %d %B %Y") : "No date" %></p>
+<% due_time = Time.parse("2000-01-01 #{task.due_time}") %>
+<p><strong>Expiration time:</strong><%= due_time.strftime("%I:%M %p") %></p>
+<p><strong>Priority:</strong><span class="badge <%= 'badge-' + task.priority.downcase %>"><%= task.priority.capitalize %></span></p>
+<p><strong>Status:</strong><%= status_with_icon(task.statuses) %></p>
+<p><strong>Category:</strong><%= category_with_icon(task.category) %></p>
+<p><strong>Created at:</strong><%= task.created_at.strftime("%A, %d %B %Y %I:%M %p") %></p>
+<br>
+
+<div class="modal-buttons">
+    <%= link_to "Edit task", edit_to_do_list_path(@task), class: "button-edit" %>
+
+    <%= button_to to_do_list_path(task), 
+                method: :delete, 
+                data: { confirm: 'Are you sure to delete the task?' }, 
+                class: 'btn-delete' do %>
+        <span class="text">Delete task</span>
+        <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path>
+            </svg>
+        </span>
+    <% end %>
+
+</div>

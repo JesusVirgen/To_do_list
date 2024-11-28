@@ -1,0 +1,68 @@
+<h1>To Do List</h1>
+
+<%= link_to "Add task", new_to_do_list_path, class: "add_button" %>
+
+<%= form_with url: to_do_lists_path, method: :get, local: true, id: "filter-form" do %>
+    <div class="filter-container">
+        <label for="status">Filter by status:</label>
+        <select name="status" id="status" class="filter-select" onchange="this.form.submit()">
+            <option value="">All</option>
+            <% ToDoList.statuses.each_key do |status| %>
+                <option value="<%= status %>" <%= params[:status] == status ? 'selected' : '' %>>
+                    <%= status.humanize %>
+                </option>
+            <% end %>
+        </select>
+    </div>
+<% end %>
+
+<table class="responsive-table">
+    <thead>
+        <tr>
+            <th>Tasks</th>
+            <th>Due date</th>
+            <th>Expiration time</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Category</th>
+            <th>Created at</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if @tasks.any? %>
+            <% @tasks.each do |task| %>
+                <tr data-task-id="<%= task.id %>">
+                    <td><%= task.title %></td>
+                    <td><%= task.due_date.present? ? task.due_date.strftime("%a, %d %b %Y") : "No date" %></td>
+                    <% due_time = Time.parse("2000-01-01 #{task.due_time}") %>
+                    <td><%= due_time.strftime("%I:%M %p") %></td>
+                    <td>
+                        <span class="badge <%= 'badge-' + task.priority.downcase %>">
+                            <%= task.priority.capitalize %>
+                        </span>
+                    </td>
+                    <td><%= status_with_icon(task.statuses) %></td>
+                    <td><%= category_with_icon(task.category) %></td>
+                    <td><%= task.created_at.strftime("%a, %d %b %Y %I:%M %p") %></td>
+                </tr>
+            <% end %>
+        <% else %>
+            <tr>
+                <td colspan="7" class="no-results">No result</td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<div class="pagination">
+    <%= paginate @tasks %>
+</div>
+
+
+<div id="taskModal">
+    <div class="modal-content">
+        <button class="close">
+            &times;
+        </button>
+        <div class="modal-body" id="modalContent"></div>
+    </div>
+</div>

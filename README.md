@@ -2,6 +2,8 @@
 
 A web-based application for managing tasks efficiently, built with **Ruby on Rails**, featuring dynamic pagination, status filtering, and user-friendly notifications. This project demonstrates CRUD functionality, validation handling, and responsive design.
 
+![Task List Screenshot](images/screenshot.png)
+
 ---
 
 ## **Features**
@@ -27,8 +29,8 @@ A web-based application for managing tasks efficiently, built with **Ruby on Rai
 
 ## **1. Clone the Repository**
 
-git clone https://github.com/JesusVirgen/To_do_list.git
-cd task-management-app
+- git clone https://github.com/JesusVirgen/To_do_list.git
+- cd task-management-app
 
 ---
 
